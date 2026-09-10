@@ -11,6 +11,7 @@ const morgan = require('morgan');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRoutes = require('./routes/tourRouter');
+const userRoutes = require('./routes/userRouter');
 
 const app = express();
 const limiter = rateLimit(
@@ -31,25 +32,25 @@ app.use(cors(
     }
 ));
 
-// app.use(helmet());
-// app.use('/api', limiter);
-// app.use(express.json({ limit: '10kb' }));
-// app.use(express.urlencoded({ extended: true, limit: '10kb' }));
-// app.use(cookieParser());
-// app.use(mongoSanitize());
-// app.use(xss());
-// app.use(hpp(
-//     {
-//         whitelist: [
-//             'duration',
-//             'ratingsQuantity',
-//             'ratingsAverage',
-//             'maxGroupSize',
-//             'difficulty',
-//             'price'
-//         ]
-//     }
-// ));
+app.use(helmet());
+app.use('/api', limiter);
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(cookieParser());
+app.use(mongoSanitize());
+app.use(xss());
+app.use(hpp(
+    {
+        whitelist: [
+            'duration',
+            'ratingsQuantity',
+            'ratingsAverage',
+            'maxGroupSize',
+            'difficulty',
+            'price'
+        ]
+    }
+));
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/tours', tourRoutes);
+app.use('/api/v1/users', userRoutes);
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
