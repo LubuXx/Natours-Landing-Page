@@ -1,7 +1,7 @@
-// TODO: Create development email system (Mailtrap)
 const nodemailer = require('nodemailer');
 
-const Email = async options => {
+// Mail for dev and test:
+const sendEmail = async options => {
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -21,9 +21,11 @@ const Email = async options => {
     await transporter.sendMail(mailOptions);
 };
 
-module.exports = Email;
+// Mail for real production:
+module.exports = class Email {
+    constructor() {
 
+    };
+};
 
-
-
-// TODO: After basic auth design, create production (SendGrip) email system.
+module.exports = sendEmail;

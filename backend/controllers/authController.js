@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const { promisify } = require('util');
-const Email = require('../utils/email');
+const sendEmail = require('../utils/email');
 
 const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -123,7 +123,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\n If you did not forget your password, then please ignore thsi email!`;
 
     try {
-        await Email({
+        await sendEmail({
             email: user.email,
             subject: 'Your password reset token (valid for 10 minutes!)',
             message
