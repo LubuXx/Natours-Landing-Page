@@ -1,3 +1,5 @@
+// TODO: Update some test methods such as invalid email types
+
 const request = require('supertest');
 const User = require('./../models/userModel');
 const app = require('../app');
