@@ -1,0 +1,2 @@
+Define simple test folders 
+Define advanced test folders for every possible errors, safety, and developer mistake detections (more detailed test files, valid email tests in signup/login tests, more than one protect test for all API's related with restrictTo function in the one test function, etc...)
