@@ -10,14 +10,14 @@ const Email = require('../utils/email');
 const { createUser, loginUser } = require('./js/helpers');
 
 describe('PASSWORD API', () => {
-    describe('PATCH /api/v1/users/forgotPassword', () => {
+    describe('POST /api/v1/users/forgotPassword', () => {
         test('Should create a reset token for an existing user', async () => {
             await createUser({
                 email: 'forgot@test.com'
             });
 
             const res = await request(app)
-                .patch('/api/v1/users/forgotPassword')
+                .post('/api/v1/users/forgotPassword')
                 .send({
                     email: 'forgot@test.com'
                 });
@@ -36,7 +36,7 @@ describe('PASSWORD API', () => {
 
         test('Should reject a non-existing email', async () => {
             const res = await request(app)
-                .patch('/api/v1/users/forgotPassword')
+                .post('/api/v1/users/forgotPassword')
                 .send({
                     email: 'doesnotexist@test.com'
                 });

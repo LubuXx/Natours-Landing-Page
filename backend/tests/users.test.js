@@ -91,20 +91,20 @@ describe('USERS API', () => {
             const token = loginRes.body.token;
             const res = await request(app)
                 .delete('/api/v1/users/deleteMe')
-                .set('Authorization', `Bearer ${token}`)
+                .set('Authorization', `Bearer ${token}`);
             
             expect(res.statusCode).toBe(204);
 
-            const user = await User.findOne({
+            const user = await User.collection.findOne({
                 email: 'delete@test.com'
-            }).select('+active');
+            });
 
             expect(user).not.toBeNull();
             expect(user.active).toBe(false);
         });
     });
 
-    describe('ÂDMIN USER ROUTES', () => {
+    describe('ADMIN USER ROUTES', () => {
         let adminToken;
         beforeEach(async () => {
             await createUser({
@@ -229,7 +229,7 @@ describe('USERS API', () => {
                     passwordConfirm: 'password123'
                 });
 
-            expect(res.statusCode).toBe(500);
+            expect(res.statusCode).toBe(403);
         });
     });
 });

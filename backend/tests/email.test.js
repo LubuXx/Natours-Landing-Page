@@ -1,10 +1,10 @@
-jest.mock('nodemailer', () => {
+jest.mock('nodemailer', () => ({
     createTransport: jest.fn(() => ({
         sendMail: jest.fn().mockResolvedValue({
             messageId: 'test-message-id'
         })
-    }));
-});
+    }))
+}));
 
 const nodemailer = require('nodemailer');
 const Email = require('../utils/email');

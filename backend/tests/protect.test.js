@@ -3,6 +3,7 @@
 const request = require('supertest');
 const app = require('../app');
 const User = require('../models/userModel');
+const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const { createUser, loginUser } = require('./js/helpers');
 
@@ -53,25 +54,67 @@ describe('PROTECT & AUTHORIZATION', () => {
             expect(res.statusCode).toBe(401);
         });
 
-        test('Should reject token after password change', async () => {
+        test('Should reject old token after password reset', async () => {
             const user = await createUser();
-            const token = jwt.sign(
-                { id: user._id },
+            const oldToken = jwt.sign(
+                {
+                    id: user._id,
+                    iat: Math.floor(Date.now() / 1000) - 10
+                },
                 process.env.JWT_SECRET,
                 {
                     expiresIn: '1h'
                 }
             );
 
-            user.password = 'newpassword123';
-            user.passwordConfirm = 'newpassword123';
-            await user.save();
+            const resetToken = user.createPasswordResetToken();
+            await user.save({ validateBeforeSave: false });
+            const resetRes = await request(app)
+                .patch(`/api/v1/users/resetPassword/${resetToken}`)
+                .send({
+                    password: 'newpassword123',
+                    passwordConfirm: 'newpassword123'
+                });
 
-            const res = await request(app)
+            expect(resetRes.statusCode).toBe(200);
+            expect(resetRes.body.token).toBeDefined();
+
+            const meRes = await request(app)
                 .get('/api/v1/users/me')
-                .set('Authorization', `Bearer ${token}`);
+                .set('Authorization', `Bearer ${oldToken}`);
 
-            expect(res.statusCode).toBe(401);
+            expect(meRes.statusCode).toBe(401);
+        });
+
+        test('Should access /me with new token after password reset', async () => {
+            const user = await createUser();
+            const resetToken = crypto.randomBytes(32).toString('hex');
+            user.passwordResetToken = crypto
+                .createHash('sha256')
+                .update(resetToken)
+                .digest('hex');
+
+            user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+            await user.save({ validateBeforeSave: false });
+            const resetRes = await request(app)
+                .patch(`/api/v1/users/resetPassword/${resetToken}`)
+                .send({
+                    password: 'newpassword123',
+                    passwordConfirm: 'newpassword123'
+                });
+
+            expect(resetRes.statusCode).toBe(200);
+
+            const newToken = resetRes.body.token;
+
+            expect(newToken).toBeDefined();
+
+            const meRes = await request(app)
+                .get('/api/v1/users/me')
+                .set('Authorization', `Bearer ${newToken}`);
+
+            expect(meRes.statusCode).toBe(200);
+            expect(meRes.body.status).toBe('success');
         });
     });
 

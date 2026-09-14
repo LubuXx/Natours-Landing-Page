@@ -6,21 +6,6 @@ const app = require('../app');
 const mongoose = require('mongoose');
 
 describe('AUTH API', () => {
-    test('DB connection test', async () => {
-        console.log('DB STATE:', mongoose.connection.readyState);
-
-        const user = await User.create({
-            name: 'DB Test',
-            email: 'dbtest@test.com',
-            password: 'password123',
-            passwordConfirm: 'password123'
-        });
-
-        console.log('USER CREATED:', user._id);
-
-        expect(user).toBeDefined();
-    });
-
     describe('POST /api/v1/users/signup', () => {
         test('should create a new user', async () => {
             const res = await request(app)

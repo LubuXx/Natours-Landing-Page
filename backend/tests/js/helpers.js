@@ -1,4 +1,5 @@
 const User = require('./../../models/userModel');
+const app = require('../../app');
 
 exports.createUser = async (options = {}) => {
     const user = await User.create({
@@ -13,7 +14,7 @@ exports.createUser = async (options = {}) => {
 };
 
 exports.loginUser = async (request, email = 'test@example.com', password = 'password123') => {
-    const response = await request
+    const response = await request(app)
         .post('/api/v1/users/login')
         .send({ email, password });
 
