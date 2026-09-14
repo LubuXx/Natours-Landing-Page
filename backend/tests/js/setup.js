@@ -21,15 +21,15 @@ beforeAll(async () => {
 
 afterEach(async () => {
     const collections = mongoose.connection.collections;
+
     for (const key in collections) {
         await collections[key].deleteMany({});
-    };
+    }
 
     jest.clearAllMocks();
 });
 
-afterAll(async () => {    
-    await mongoose.connection.dropDatabase();
+afterAll(async () => {
     await mongoose.connection.close();
     await mongoServer.stop();
 });

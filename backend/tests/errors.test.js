@@ -3,6 +3,7 @@
 const request = require('supertest');
 const app = require('../app');
 const User = require('../models/userModel');
+const { loginUser } = require('./js/helpers');
 
 describe('ERROR HANDLING', () => {
     test('Should return 400 for duplicate email', async () => {
@@ -27,8 +28,18 @@ describe('ERROR HANDLING', () => {
     });
 
     test('Should return 400 for invalid MongoDB ObjectId', async () => {
+        await User.create({
+            name: 'Admin User',
+            email: 'cast-error-admin@test.com',
+            password: 'password123',
+            passwordConfirm: 'password123',
+            role: 'admin'
+        });
+        const loginResponse = await loginUser(request, 'cast-error-admin@test.com');
+
         const res = await request(app)
-            .get('/api/v1/users/not-valid-id');
+            .get('/api/v1/users/not-valid-id')
+            .set('Authorization', `Bearer ${loginResponse.body.token}`);
 
         expect(res.statusCode).toBe(400);
     });

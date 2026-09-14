@@ -201,7 +201,7 @@ describe('USERS API', () => {
             const token = loginRes.body.token;
             const res = await request(app)
                 .get('/api/v1/users')
-                .set('Auhtorization', `Bearer ${token}`);
+                .set('Authorization', `Bearer ${token}`);
 
             expect(res.statusCode).toBe(403);
         });

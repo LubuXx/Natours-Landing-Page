@@ -1,6 +1,6 @@
 jest.mock('nodemailer', () => {
     createTransport: jest.fn(() => ({
-        sendMail: jes.fn().mockResolvedValue({
+        sendMail: jest.fn().mockResolvedValue({
             messageId: 'test-message-id'
         })
     }));
@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const Email = require('../utils/email');
 
 describe('EMAIL SYSTEM', () => {
-    test('Should create SMTP transporter', async () => {
+    test('should create an SMTP transporter', async () => {
         await Email({
             email: 'test@example.com',
             subject: 'Test Subject',
@@ -20,7 +20,7 @@ describe('EMAIL SYSTEM', () => {
         expect(nodemailer.createTransport).toHaveBeenCalled();
     });
 
-    test('Should send email with correct options', async () => {
+    test('Should send email with the supplied options', async () => {
         const sendMail = jest.fn().mockResolvedValue({
             messageId: 'test-message-id'
         });

@@ -11,7 +11,7 @@ const { createUser, loginUser } = require('./js/helpers');
 
 describe('PASSWORD API', () => {
     describe('PATCH /api/v1/users/forgotPassword', () => {
-        test('Should create reset token for existing user', async () => {
+        test('Should create a reset token for an existing user', async () => {
             await createUser({
                 email: 'forgot@test.com'
             });
@@ -34,7 +34,7 @@ describe('PASSWORD API', () => {
             expect(user.passwordResetExpires).toBeDefined();
         });
 
-        test('Should reject non-existing email', async () => {
+        test('Should reject a non-existing email', async () => {
             const res = await request(app)
                 .patch('/api/v1/users/forgotPassword')
                 .send({
@@ -46,7 +46,7 @@ describe('PASSWORD API', () => {
     });
 
     describe('PATCH /api/v1/users/resetPassword/:token', () => {
-        test('Should reset password with valid token', async () => {
+        test('Should reset a password with a valid token', async () => {
             const user = await createUser({
                 email: 'reset@test.com'
             });
@@ -64,14 +64,14 @@ describe('PASSWORD API', () => {
             expect(res.body.status).toBe('success');
             expect(res.body.token).toBeDefined();
 
-            const updateUser = await User.findOne({ 
-                email: 'reset@test.com' 
+            const updatedUser = await User.findOne({
+                email: 'reset@test.com'
             }).select('+password');
 
-            expect(await updateUser.correctPassword('newpassword123', updateUser.password)).toBe(true);
+            expect(await updatedUser.correctPassword('newpassword123', updatedUser.password)).toBe(true);
         });
 
-        test('Should reject invalid reset token', async () => {
+        test('Should reject an invalid reset token', async () => {
             const res = await request(app)
                 .patch('/api/v1/users/resetPassword/invalid-token')
                 .send({
@@ -82,7 +82,7 @@ describe('PASSWORD API', () => {
             expect(res.statusCode).toBe(400);
         });
 
-        test('Should reject mismatched password', async () => {
+        test('Should reject mismatched reset password', async () => {
             const user = await createUser({
                 email: 'mismatch@test.com'
             });
@@ -99,7 +99,7 @@ describe('PASSWORD API', () => {
             expect(res.statusCode).toBe(400);
         });
 
-        test('Should reject expired reset token', async () => {
+        test('Should reject an expired reset token', async () => {
             const user = await createUser({
                 email: 'expired@test.com'
             });
@@ -123,7 +123,7 @@ describe('PASSWORD API', () => {
     });
 
     describe('PATCH /api/v1/users/updateMyPassword', () => {
-        test('Should update password with correct current password', async () => {
+        test('Should update a password with the correct current password', async () => {
             await createUser({
                 email: 'updatepassword@test.com'
             });
@@ -148,7 +148,7 @@ describe('PASSWORD API', () => {
             expect(res.body.token).toBeDefined();
         });
 
-        test('Should reject wrong current password', async () => {
+        test('Should reject an incorrect current password', async () => {
             await createUser({
                 email: 'wrongcurrent@test.com'
             });
@@ -169,10 +169,10 @@ describe('PASSWORD API', () => {
                     passwordConfirm: 'newpassword123'
                 });
 
-            expect(res.statusCode).toBe(400);
+            expect(res.statusCode).toBe(401);
         });
 
-        test('Should reject mismatched new password', async () => {
+        test('Should reject mismatched new passwords', async () => {
             await createUser({
                 email: 'mismatchupdate@test.com'
             });

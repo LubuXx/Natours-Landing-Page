@@ -1,10 +1,26 @@
 // TODO: Update some test methods such as invalid email types
 
 const request = require('supertest');
-const User = require('./../models/userModel');
+const User = require('../models/userModel');
 const app = require('../app');
+const mongoose = require('mongoose');
 
 describe('AUTH API', () => {
+    test('DB connection test', async () => {
+        console.log('DB STATE:', mongoose.connection.readyState);
+
+        const user = await User.create({
+            name: 'DB Test',
+            email: 'dbtest@test.com',
+            password: 'password123',
+            passwordConfirm: 'password123'
+        });
+
+        console.log('USER CREATED:', user._id);
+
+        expect(user).toBeDefined();
+    });
+
     describe('POST /api/v1/users/signup', () => {
         test('should create a new user', async () => {
             const res = await request(app)
@@ -19,12 +35,12 @@ describe('AUTH API', () => {
             expect(res.statusCode).toBe(201);
             expect(res.body.status).toBe('success');
             expect(res.body.token).toBeDefined();
-            expect(res.body.data.user.email).toBe('burak@test.com');
+            expect(res.body.data.user.email).toBe('test@test.com');
 
-            const user = await User.findOne({ email: 'burak@test.com' }).select('+password');
+            const user = await User.findOne({ email: 'test@test.com' }).select('+password');
 
             expect(user).not.toBeNull();
-            expect(user.password).not.toBe('password123')
+            expect(user.password).not.toBe('password123');
         });
 
         test('should reject signup without name', async () => {
@@ -39,7 +55,7 @@ describe('AUTH API', () => {
             expect(res.statusCode).toBe(400);
         });
 
-        test('Should reject password shorter than 8 characters', async () => {
+        test('Should reject a password shorter than 8 characters', async () => {
             const res = await request(app)
                 .post('/api/v1/users/signup')
                 .send({
@@ -52,7 +68,7 @@ describe('AUTH API', () => {
             expect(res.statusCode).toBe(400);
         });
 
-        test('Should reject duplicate email', async () => {
+        test('Should reject a duplicate email', async () => {
             await User.create({
                 name: 'Existing user',
                 email: 'existing@test.com',
@@ -69,21 +85,21 @@ describe('AUTH API', () => {
                     passwordConfirm: 'password123'
                 });
 
-            expect(res.body.statusCode).toBe(400);
+            expect(res.statusCode).toBe(400);
         });
     });
 
     describe('POST /api/v1/users/login', () => {
         beforeEach(async () => {
             await User.create({
-                name: 'LOgin User',
+                name: 'Login User',
                 email: 'login@test.com',
                 password: 'password123',
                 passwordConfirm: 'password123'
             });
         });
 
-        test('Should login with correct email and password', async () => {
+        test('Should log in with a correct email and password', async () => {
             const res = await request(app)
                 .post('/api/v1/users/login')
                 .send({
@@ -91,13 +107,13 @@ describe('AUTH API', () => {
                     password: 'password123'
                 });
 
-            expect(res.body.statusCode).toBe(200);
+            expect(res.statusCode).toBe(200);
             expect(res.body.status).toBe('success');
             expect(res.body.token).toBeDefined();
             expect(res.headers['set-cookie']).toBeDefined();
         });
 
-        test('Should reject wrong password', async () => {
+        test('Should reject an incorrect password', async () => {
             const res = await request(app)
                 .post('/api/v1/users/login')
                 .send({
@@ -105,10 +121,10 @@ describe('AUTH API', () => {
                     password: 'wrongPassword'
                 });
 
-            expect(res.body.statusCode).toBe(401);
+            expect(res.statusCode).toBe(401);
         });
 
-        test('Should reject wrong email', async () => {
+        test('Should reject an unknown email', async () => {
             const res = await request(app)
                 .post('/api/v1/users/login')
                 .send({
@@ -116,17 +132,17 @@ describe('AUTH API', () => {
                     password: 'password123'
                 });
 
-            expect(res.body.statusCode).toBe(401);
+            expect(res.statusCode).toBe(401);
         });
 
-        test('Should reject missing email', async () => {
+        test('Should reject a missing email', async () => {
             const res = await request(app)
                 .post('/api/v1/users/login')
                 .send({
                     password: 'password123'
                 });
 
-            expect(res.body.statusCode).toBe(400);
+            expect(res.statusCode).toBe(400);
         });
 
         test('Should reject missing password', async () => {
@@ -136,16 +152,16 @@ describe('AUTH API', () => {
                     email: 'login@test.com'
                 });
 
-            expect(res.body.statusCode).toBe(400);
+            expect(res.statusCode).toBe(400);
         });
     });
 
     describe('GET /api/v1/users/logout', () => {
-        test('Should logout user', async () => {
-            const res = await request
+        test('Should clear the authentication cookie', async () => {
+            const res = await request(app)
                 .get('/api/v1/users/logout');
 
-            expect(res.body.statusCode).toBe(200);
+            expect(res.statusCode).toBe(200);
             expect(res.body.status).toBe('success');
             expect(res.headers['set-cookie']).toBeDefined();
         });

@@ -1,7 +1,7 @@
 // TODO: Create more protect route test to make sure that every route is protected!
 
 const request = require('supertest');
-const app = require('./../app');
+const app = require('../app');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const { createUser, loginUser } = require('./js/helpers');
@@ -48,7 +48,7 @@ describe('PROTECT & AUTHORIZATION', () => {
             await User.deleteOne({ _id: user._id });
             const res = await request(app)
                 .get('/api/v1/users/me')
-                .set('Authorization' `Bearer ${token}`);
+                .set('Authorization', `Bearer ${token}`);
 
             expect(res.statusCode).toBe(401);
         });
@@ -63,8 +63,8 @@ describe('PROTECT & AUTHORIZATION', () => {
                 }
             );
 
-            user.password = 'newpassword123',
-            user.passwordConfirm = 'newpassword123',
+            user.password = 'newpassword123';
+            user.passwordConfirm = 'newpassword123';
             await user.save();
 
             const res = await request(app)
@@ -123,10 +123,9 @@ describe('PROTECT & AUTHORIZATION', () => {
                 'password123'
             );
 
-            const year = req.params.year * 1;
             const token = loginRes.body.token;
             const res = await request(app)
-                .get(`/api/v1/users/monthly-plan/${year}`)
+                .get('/api/v1/tours/monthly-plan/2021')
                 .set('Authorization', `Bearer ${token}`);
 
             expect(res.statusCode).toBe(403);
