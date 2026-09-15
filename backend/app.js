@@ -28,7 +28,8 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(cors(
     {
-        origin: process.env.FRONTEND_HOST_LOCAL
+        origin: process.env.FRONTEND_HOST_LOCAL,
+        credentials: true
     }
 ));
 
