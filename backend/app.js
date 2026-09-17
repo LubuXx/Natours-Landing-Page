@@ -12,6 +12,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRoutes = require('./routes/tourRouter');
 const userRoutes = require('./routes/userRouter');
+const reviewRoutes = require('./routes/reviewRouter');
 
 const app = express();
 const limiter = rateLimit(
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/reviews', reviewRoutes);
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
