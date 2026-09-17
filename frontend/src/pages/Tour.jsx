@@ -94,7 +94,19 @@ function Tour() {
                             <h2 className='heading-secondary ma-bt-lg'>
                                 Your tour guides
                             </h2>
-                            {}
+                            {
+                                tour.guides.map((guide, index) => (
+                                    <div key={index} className='overview-box__detail'>
+                                        <img className='overview-box__img' src={`/img/users/${guide.photo}`} alt={`${guide.name}`} />
+                                        <span className='overview-box__label'>
+                                            {guide.role === 'lead-guide' ? 'Lead Guide' : 'Tour Guide'}
+                                        </span>
+                                        <span className='overview-box__text'>
+                                            {guide.name}
+                                        </span>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -122,17 +134,21 @@ function Tour() {
                 }
             </section>
 
+            {/* After the review modelling it's and test docs, update this section as a location at real time gps*/}
             <section className='section-map'>
                 <div id='map'></div>
             </section>
 
             <section className='section-reviews'>
                 <div className='reviews'>
-                    {
-                        tour.reviews?.map((review) => (
-                            <ReviewCard />
-                        ))
-                    }
+                {
+                    tour.reviews?.map((review) => (
+                        <ReviewCard
+                            key={review._id}
+                            review={review}
+                        />
+                    ))
+                }
                 </div>
             </section>
 

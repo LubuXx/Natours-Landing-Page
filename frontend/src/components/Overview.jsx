@@ -83,7 +83,7 @@ export default function Overview() {
                                 <span className='card__footer-value'>{tour.ratingsAverage}</span>
                                 <span className='card__footer-text'> {`rating (${tour.ratingsQuantity})`}</span>
                             </p>
-                            <Link className='btn btn--green btn--small' to={`/tours/${tour._id}`}>Details</Link>
+                            <Link className='btn btn--green btn--small' to={`/tours/${tour.slug}`}>Details</Link>
                         </div>
                     </div>
                 ))}
