@@ -30,7 +30,7 @@ router
     .post(authController.protect, authController.restrictTo('lead-guide', 'admin'), tourController.createTour);
 
 router
-    .route('/:id')
+    .route('/:slug')
     .get(tourController.getTour)
     .patch(authController.protect, authController.restrictTo('lead-guide', 'admin'), tourController.updateTour)
     .delete(authController.protect, authController.restrictTo('lead-guide', 'admin'), tourController.deleteTour);
