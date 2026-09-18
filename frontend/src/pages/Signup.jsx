@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignup } from '../hooks/useSignup';
+import ShowAlert from '../components/Alert';
+import CircularIndeterminate from '../components/Loading';
 
 function Signup() {
   const navigate = useNavigate();
@@ -11,20 +13,32 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
 
     try {
+      setSuccess(false);
       await signupUser({name, email, password, passwordConfirm });
-      navigate('/');
+      setSuccess(true)
+      window.setTimeout(() => {
+        navigate('/me');
+      }, 700);
     } catch (err) {
-      // Not defined yet;
+      setSuccess(false);
     };
   };
 
   return (
     <main className='main'>
+      {
+        isLoading && (
+          <div className='loading-overlay'>
+            {CircularIndeterminate()}
+          </div>
+        )
+      }
       <div className='login-form'>
         <h2 className='heading-secondary ma-bt-lg'>Create a new account</h2>
         <form className='form form--login' onSubmit={handleSubmit}>
@@ -44,18 +58,21 @@ function Signup() {
             <label className='form__label' htmlFor='password-confirm'>Confirm Password</label>
             <input className='form__input' id='password-confirm' type='password' placeholder='••••••••' value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} required />
           </div>
-          {
-            error && (
-              <div className='from__error'>
-                {error}
-              </div>
-            )
-          }
           <div className='form__group'>
             <button className='btn btn--green' type='submit' disabled={isLoading}>
               { isLoading ? 'Creating Account...' : 'Create Account'}
             </button>
           </div>
+          {
+            error && (
+              ShowAlert('error', error)
+            )
+          }
+          {
+            success && (
+              ShowAlert('success', 'Account created successfully!')
+            )
+          }
         </form>
       </div>
     </main>
