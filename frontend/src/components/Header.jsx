@@ -17,7 +17,7 @@ function Header() {
                 {
                     isAuthenticated ? (
                     <div>
-                        <a className='nav__el nav__el--logout' onClick={logout}>Log out</a>
+                        <Link to='/' className='nav__el nav__el--logout' onClick={logout}>Log out</Link>
                         <Link className='nav__el' to="/me">
                             <img className='nav__user-img' src={user.photo} alt={`Photo of ${user.name}`} />
                             <span>{user.name[0]}</span>

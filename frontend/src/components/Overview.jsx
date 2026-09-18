@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTours } from '../services/tourService';
 import { Link } from 'react-router-dom';
+import CircularIndeterminate from './Loading';
 
 export default function Overview() {
     const [tours, setTours] = useState([]);
@@ -22,7 +23,7 @@ export default function Overview() {
         fetchTours();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <div className='loading-overlay'>{CircularIndeterminate()}</div>;
     if (error) return <p>{error}</p>;
 
     return (

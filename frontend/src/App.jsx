@@ -12,6 +12,7 @@ import DownloadApps from './pages/DownloadApps';
 import BecomeGuide from './pages/BecomeGuide';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
+import Error from './pages/Error';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/me' element={<Account />} />
           <Route path='/tours/:id' element={<Tour />} />
+          <Route path='*' element={<Error message={`404 Page Not Found!`} />} />
         </Routes>
       <Footer />
       <Routes>

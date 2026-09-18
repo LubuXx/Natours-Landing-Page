@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import Error from './Error';
 
 function NavItem({ link, text, icon, active = false }) {
     return (
@@ -19,7 +20,7 @@ function NavItem({ link, text, icon, active = false }) {
 
 export default function Account() {
     const { user } = useAuth();
-    if (!user) return null;
+    if (!user) return <Error message={`You are not logged in!`} />
 
     return (
         <main className='main'>

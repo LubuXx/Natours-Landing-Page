@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTour } from '../services/tourService';
 import ReviewCard from '../components/ReviewCard';
+import CircularIndeterminate from '../components/Loading';
 
 function OverviewBox({ label, text, icon }) {
     return(
@@ -36,7 +37,7 @@ function Tour() {
         fetchTour();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <div className='loading-overlay'>{CircularIndeterminate()}</div>;
     if (error) return <p>{error}</p>;
     if (!tour) return <p>Tour not found!</p>;
 
