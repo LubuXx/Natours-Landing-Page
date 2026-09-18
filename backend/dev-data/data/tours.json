@@ -466,5 +466,366 @@
         "day": 5
       }
     ]
+  },
+  {
+    "startLocation": {
+      "description": "Manaus, BRA",
+      "type": "Point",
+      "coordinates": [
+        -60.02578,
+        -3.119027
+      ],
+      "address": "Manaus, AM, Brazil"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-10-1.jpg",
+      "tour-10-2.jpg",
+      "tour-10-3.jpg"
+    ],
+    "startDates": [
+      "2024-05-14T09:00:00.000Z",
+      "2024-08-09T09:00:00.000Z",
+      "2025-02-21T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2980",
+    "name": "The Amazon Trekker",
+    "duration": 8,
+    "maxGroupSize": 12,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a1f292f8fb814b56fa184",
+      "5c8a201e2f8fb814b56fa186"
+    ],
+    "price": 1297,
+    "summary": "Canoeing rivers and trekking dense jungle deep in the Amazon rainforest",
+    "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageCover": "tour-10-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2981",
+        "description": "Manaus Riverside",
+        "type": "Point",
+        "coordinates": [
+          -60.02578,
+          -3.119027
+        ],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2982",
+        "description": "Anavilhanas National Park",
+        "type": "Point",
+        "coordinates": [
+          -60.921094,
+          -2.62955
+        ],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2983",
+        "description": "Jaú National Park",
+        "type": "Point",
+        "coordinates": [
+          -61.9816,
+          -1.925
+        ],
+        "day": 4
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "Marrakech, MAR",
+      "type": "Point",
+      "coordinates": [
+        -7.989054,
+        31.629472
+      ],
+      "address": "Jemaa el-Fnaa, Marrakech 40000, Morocco"
+    },
+    "ratingsAverage": 4.3,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-11-1.jpg",
+      "tour-11-2.jpg",
+      "tour-11-3.jpg"
+    ],
+    "startDates": [
+      "2024-03-02T09:00:00.000Z",
+      "2024-10-11T09:00:00.000Z",
+      "2025-04-06T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2984",
+    "name": "The Desert Nomad",
+    "duration": 6,
+    "maxGroupSize": 15,
+    "difficulty": "easy",
+    "guides": [
+      "5c8a23412f8fb814b56fa18c",
+      "5c8a21f22f8fb814b56fa18a"
+    ],
+    "price": 897,
+    "summary": "Camel treks and starlit camps across the dunes of the Sahara",
+    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageCover": "tour-11-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2985",
+        "description": "Marrakech Medina",
+        "type": "Point",
+        "coordinates": [
+          -7.989054,
+          31.629472
+        ],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2986",
+        "description": "Ait Benhaddou",
+        "type": "Point",
+        "coordinates": [
+          -7.13256,
+          31.047389
+        ],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2987",
+        "description": "Merzouga Desert Camp",
+        "type": "Point",
+        "coordinates": [
+          -4.01333,
+          31.09651
+        ],
+        "day": 3
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "Chamonix, FRA",
+      "type": "Point",
+      "coordinates": [
+        6.869433,
+        45.923698
+      ],
+      "address": "35 Place du Triangle de l'Amitié, 74400 Chamonix-Mont-Blanc, France"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-12-1.jpg",
+      "tour-12-2.jpg",
+      "tour-12-3.jpg"
+    ],
+    "startDates": [
+      "2024-06-28T08:00:00.000Z",
+      "2024-09-13T08:00:00.000Z",
+      "2025-07-19T08:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2988",
+    "name": "The Alpine Climber",
+    "duration": 7,
+    "maxGroupSize": 10,
+    "difficulty": "difficult",
+    "guides": [
+      "5c8a21d02f8fb814b56fa189",
+      "5c8a1f4e2f8fb814b56fa185"
+    ],
+    "price": 2497,
+    "summary": "Roped glacier crossings and high-altitude climbs beneath Mont Blanc",
+    "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip.",
+    "imageCover": "tour-12-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2989",
+        "description": "Aiguille du Midi",
+        "type": "Point",
+        "coordinates": [
+          6.88722,
+          45.87867
+        ],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c298a",
+        "description": "Mer de Glace",
+        "type": "Point",
+        "coordinates": [
+          6.92682,
+          45.90167
+        ],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c298b",
+        "description": "Tête Rousse Mont Blanc Base Camp",
+        "type": "Point",
+        "coordinates": [
+          6.83333,
+          45.83333
+        ],
+        "day": 4
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "Santorini, GRC",
+      "type": "Point",
+      "coordinates": [
+        25.43192,
+        36.393154
+      ],
+      "address": "Fira, 847 00, Santorini, Greece"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-13-1.jpg",
+      "tour-13-2.jpg",
+      "tour-13-3.jpg"
+    ],
+    "startDates": [
+      "2024-05-30T09:00:00.000Z",
+      "2024-07-25T09:00:00.000Z",
+      "2025-06-14T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c298c",
+    "name": "The Island Hopper",
+    "duration": 9,
+    "maxGroupSize": 18,
+    "difficulty": "easy",
+    "guides": [
+      "5c8a22c62f8fb814b56fa18b",
+      "5c8a201e2f8fb814b56fa186"
+    ],
+    "price": 1697,
+    "summary": "Sailing between whitewashed cliffs and hidden coves of the Aegean",
+    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat lorem ipsum dolor sit amet.\nConsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageCover": "tour-13-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c298d",
+        "description": "Fira",
+        "type": "Point",
+        "coordinates": [
+          25.43192,
+          36.393154
+        ],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c298e",
+        "description": "Oia",
+        "type": "Point",
+        "coordinates": [
+          25.3755,
+          36.46139
+        ],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c298f",
+        "description": "Milos Island",
+        "type": "Point",
+        "coordinates": [
+          24.4437,
+          36.72727
+        ],
+        "day": 3
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2990",
+        "description": "Naxos Island",
+        "type": "Point",
+        "coordinates": [
+          25.3765,
+          37.1038
+        ],
+        "day": 4
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "Nairobi, KEN",
+      "type": "Point",
+      "coordinates": [
+        36.821945,
+        -1.292066
+      ],
+      "address": "Nairobi, Kenya"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-14-1.jpg",
+      "tour-14-2.jpg",
+      "tour-14-3.jpg"
+    ],
+    "startDates": [
+      "2024-01-20T07:00:00.000Z",
+      "2024-08-17T07:00:00.000Z",
+      "2025-01-11T07:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2991",
+    "name": "The Safari Seeker",
+    "duration": 10,
+    "maxGroupSize": 14,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a21f22f8fb814b56fa18a",
+      "5c8a23412f8fb814b56fa18c",
+      "5c8a1f292f8fb814b56fa184"
+    ],
+    "price": 2997,
+    "summary": "Tracking the Big Five across Kenya's most iconic savannahs",
+    "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nVoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageCover": "tour-14-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2992",
+        "description": "Nairobi National Park",
+        "type": "Point",
+        "coordinates": [
+          36.82814,
+          -1.3655
+        ],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2993",
+        "description": "Maasai Mara National Reserve",
+        "type": "Point",
+        "coordinates": [
+          35.14365,
+          -1.49478
+        ],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2994",
+        "description": "Lake Nakuru National Park",
+        "type": "Point",
+        "coordinates": [
+          36.08692,
+          -0.37276
+        ],
+        "day": 4
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2995",
+        "description": "Amboseli National Park",
+        "type": "Point",
+        "coordinates": [
+          37.25972,
+          -2.64722
+        ],
+        "day": 6
+      }
+    ]
   }
 ]

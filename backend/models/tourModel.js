@@ -127,9 +127,7 @@ tourSchema.virtual('reviews', {
 });
 
 tourSchema.pre('save', function (next) {
-    if (isModified('name')) {
-        this.slug = slugify(this.name, { lower: true, strict: true});
-    };
+    this.slug = slugify(this.name, { lower: true, strict: true});
     next();
 });
 

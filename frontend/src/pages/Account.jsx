@@ -51,11 +51,11 @@ export default function Account() {
                         <form className='form form-user-data'>
                             <div className='form__group'>
                                 <label className='form__label' htmlFor='name'>Name</label>
-                                <input id='name' className='form__input' type='text' value={user.name} required name='name' />
+                                <input id='name' className='form__input' type='text' defaultValue={user.name} required name='name' />
                             </div>
                             <div className='form__group ma-bt-md'>
                                 <label className='form__label' htmlFor='email'>Email</label>
-                                <input id='email' className='form__input' type='email' value={user.email} required name='email' />
+                                <input id='email' className='form__input' type='email' defaultValue={user.email} required name='email' />
                             </div>
                             <div className='form__group form__photo-upload'>
                                 <img className='form__user-photo' src={`/img/users/${user.photo}`} alt={`${user.name}'s photo`} />

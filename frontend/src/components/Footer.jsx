@@ -23,7 +23,7 @@ function Footer() {
                     <a href='#'>Contact</a>
                 </li>
             </ul>
-            <p className='footer__copyright'>&copy; by Burak Bas</p>
+            <p className='footer__copyright'>© {new Date().getFullYear()} LubuX. All rights reserved.</p>
         </div>
     );
 };

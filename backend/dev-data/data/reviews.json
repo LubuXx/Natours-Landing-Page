@@ -418,5 +418,110 @@
     "rating": 4,
     "user": "5c8a24a02f8fb814b56fa193",
     "tour": "5c88fa8cf4afda39709c2966"
+  },
+  {
+    "_id": "5c8a3e7614eb5c17645c9145",
+    "review": "The jungle canoe crossings and night sounds of the rainforest made this feel like a completely different world.",
+    "rating": 5,
+    "user": "5c8a1dfa2f8fb814b56fa181",
+    "tour": "5c88fa8cf4afda39709c2980"
+  },
+  {
+    "_id": "5c8a3e8a14eb5c17645c9146",
+    "review": "Humid and intense at times, but the guides knew the terrain incredibly well and kept the group safe.",
+    "rating": 4,
+    "user": "5c8a1e1a2f8fb814b56fa182",
+    "tour": "5c88fa8cf4afda39709c2980"
+  },
+  {
+    "_id": "5c8a3e9c14eb5c17645c9147",
+    "review": "Waking up to howler monkeys and paddling past caiman at dawn is something I will never forget.",
+    "rating": 5,
+    "user": "5c8a1ec62f8fb814b56fa183",
+    "tour": "5c88fa8cf4afda39709c2980"
+  },
+  {
+    "_id": "5c8a3eae14eb5c17645c9148",
+    "review": "Sleeping under the stars in the Sahara after a sunset camel ride was the highlight of the whole trip.",
+    "rating": 4,
+    "user": "5c8a20d32f8fb814b56fa187",
+    "tour": "5c88fa8cf4afda39709c2984"
+  },
+  {
+    "_id": "5c8a3ec014eb5c17645c9149",
+    "review": "Ait Benhaddou looked straight out of a film, and the desert camp food was surprisingly great.",
+    "rating": 5,
+    "user": "5c8a211f2f8fb814b56fa188",
+    "tour": "5c88fa8cf4afda39709c2984"
+  },
+  {
+    "_id": "5c8a3ed214eb5c17645c914a",
+    "review": "Beautiful scenery throughout, though the long drives between stops were more tiring than expected.",
+    "rating": 4,
+    "user": "5c8a23c82f8fb814b56fa18d",
+    "tour": "5c88fa8cf4afda39709c2984"
+  },
+  {
+    "_id": "5c8a3ee414eb5c17645c914b",
+    "review": "Crossing the glacier roped up to the group was the most exhilarating thing I have done on a tour.",
+    "rating": 5,
+    "user": "5c8a23de2f8fb814b56fa18e",
+    "tour": "5c88fa8cf4afda39709c2988"
+  },
+  {
+    "_id": "5c8a3ef614eb5c17645c914c",
+    "review": "Physically demanding as advertised, but the view from Aiguille du Midi made every step worth it.",
+    "rating": 5,
+    "user": "5c8a24282f8fb814b56fa18f",
+    "tour": "5c88fa8cf4afda39709c2988"
+  },
+  {
+    "_id": "5c8a3f0814eb5c17645c914d",
+    "review": "Excellent, experienced guides. Wish we had one more day to acclimatize before the higher sections.",
+    "rating": 4,
+    "user": "5c8a24402f8fb814b56fa190",
+    "tour": "5c88fa8cf4afda39709c2988"
+  },
+  {
+    "_id": "5c8a3f1a14eb5c17645c914e",
+    "review": "Sailing from Oia to Milos with a stop for cliff jumping was the perfect mix of relaxing and adventurous.",
+    "rating": 5,
+    "user": "5c8a245f2f8fb814b56fa191",
+    "tour": "5c88fa8cf4afda39709c298c"
+  },
+  {
+    "_id": "5c8a3f2c14eb5c17645c914f",
+    "review": "Every island had its own personality. Naxos beaches were quieter and honestly my favorite stop.",
+    "rating": 4,
+    "user": "5c8a24822f8fb814b56fa192",
+    "tour": "5c88fa8cf4afda39709c298c"
+  },
+  {
+    "_id": "5c8a3f3e14eb5c17645c9150",
+    "review": "Well organized boat transfers and a great group size, never felt crowded at any stop.",
+    "rating": 5,
+    "user": "5c8a24a02f8fb814b56fa193",
+    "tour": "5c88fa8cf4afda39709c298c"
+  },
+  {
+    "_id": "5c8a3f5014eb5c17645c9151",
+    "review": "Saw lions, elephants and a rhino within the first two days, the Maasai Mara portion was unbelievable.",
+    "rating": 5,
+    "user": "5c8a1dfa2f8fb814b56fa181",
+    "tour": "5c88fa8cf4afda39709c2991"
+  },
+  {
+    "_id": "5c8a3f6214eb5c17645c9152",
+    "review": "Long days on the road between parks, but the wildlife sightings more than made up for it.",
+    "rating": 5,
+    "user": "5c8a1e1a2f8fb814b56fa182",
+    "tour": "5c88fa8cf4afda39709c2991"
+  },
+  {
+    "_id": "5c8a3f7414eb5c17645c9153",
+    "review": "Our guides could spot animals from incredible distances and knew so much about each park.",
+    "rating": 4,
+    "user": "5c8a1ec62f8fb814b56fa183",
+    "tour": "5c88fa8cf4afda39709c2991"
   }
 ]
