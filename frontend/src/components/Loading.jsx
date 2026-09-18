@@ -1,9 +1,10 @@
 import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function CircularIndeterminate() {
     return (
-        <div className='loading-overlay'>
-            <CircularProgress aria-label="Loading…" />
-        </div>
+        <Box sx={{display: 'flex'}}>
+            <CircularProgress aria-label='Loading...' />
+        </Box>
     );
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
 import ShowAlert from '../components/Alert';
-import { circularProgressClasses } from '@mui/material/CircularProgress';
+import CircularIndeterminate from '../components/Loading';
 
 function Login() {
   const navigate = useNavigate();
@@ -21,17 +21,20 @@ function Login() {
       await loginUser({ email, password });
       setSuccess(true);
       window.setTimeout(() => {
-        navigate('/me');
-      }, 1500);
+        navigate('/me'); 
+      }, 800);
     } catch (err) {
       setSuccess(false);
-    } finally {
-    };
+    }
   };
 
   return (
     <main className='main'>
-      {isLoading && <circularProgressClasses />}
+      {isLoading && (
+        <div className='loading-overlay'>
+          {CircularIndeterminate()}
+        </div>
+      )}
       <div className='login-form'>
         <h2 className='heading-secondary ma-bt-lg'>Log in to your accound</h2>
         <form className='form form--login' onSubmit={handleSubmit}>
