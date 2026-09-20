@@ -4,6 +4,8 @@ import { getTour } from '../services/tourService';
 import ReviewCard from '../components/ReviewCard';
 import CircularIndeterminate from '../components/Loading';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 function OverviewBox({ label, text, icon }) {
     return(
         <div className='overview-box__detail'>
@@ -53,7 +55,7 @@ function Tour() {
             <section className='section-header'>
                 <div className='header__hero'>
                     <div className='header__hero-overlay'>&nbsp;</div>
-                    <img className='header__hero-img' src={`/img/tours/${tour.imageCover}`} />
+                    <img className='header__hero-img' src={`${BACKEND_URL}/img/tours/${tour.imageCover}`} />
                 </div>
                 <div className='heading-box'>
                     <h1 className='heading-primary'>
@@ -129,7 +131,7 @@ function Tour() {
                 {
                     tour.images?.map((image, index) => (
                         <div className='picture-box' key={index}>
-                            <img className={`picture-box__img picture-box__img--${index + 1}`} src={`/img/tours/${image}`} alt={`${tour.name} tour ${index + 1}`} />
+                            <img className={`picture-box__img picture-box__img--${index + 1}`} src={`${BACKEND_URL}/img/tours/${image}`} alt={`${tour.name} tour ${index + 1}`} />
                         </div>
                     ))
                 }
@@ -158,8 +160,8 @@ function Tour() {
                     <div className='cta__img cta__img--logo'>
                         <img src='/img/logo-white.png' alt='Natours logo' />
                     </div>
-                    {tour.images?.[1] && (<img className='cta__img cta__img--1' src={`/img/tours/${tour.images[1]}`} />)}
-                    {tour.images?.[2] && (<img className='cta__img cta__img--2' src={`/img/tours/${tour.images[2]}`} />)}
+                    {tour.images?.[1] && (<img className='cta__img cta__img--1' src={`${BACKEND_URL}/img/tours/${tour.images[1]}`} />)}
+                    {tour.images?.[2] && (<img className='cta__img cta__img--2' src={`${BACKEND_URL}/img/tours/${tour.images[2]}`} />)}
                     <div className='cta__content'>
                         <h2 className='heading-secondary'>
                             What are you waiting for?

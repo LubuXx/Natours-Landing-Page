@@ -3,6 +3,8 @@ import { getTours } from '../services/tourService';
 import { Link } from 'react-router-dom';
 import CircularIndeterminate from './Loading';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function Overview() {
     const [tours, setTours] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ export default function Overview() {
                         <div className='card__header'>
                             <div className='card__picture'>
                                 <div className='card__picture-overlay'>&nbsp;</div>
-                                <img className='card__picture-img' src={`/img/tours/${tour.imageCover}`} alt={`${tour.name}`} />
+                                <img className='card__picture-img' src={`${BACKEND_URL}/img/tours/${tour.imageCover}`} alt={`${tour.name}`} />
                             </div>
                             <h3 className='heading-tertirary'>
                                 <span >{tour.name}</span>
@@ -84,7 +86,7 @@ export default function Overview() {
                                 <span className='card__footer-value'>{tour.ratingsAverage}</span>
                                 <span className='card__footer-text'> {`rating (${tour.ratingsQuantity})`}</span>
                             </p>
-                            <Link className='btn btn--green btn--small' to={`/tours/${tour.slug}`}>Details</Link>
+                            <Link className='btn btn--green btn--small' to={`/tours/${tour.id}`}>Details</Link>
                         </div>
                     </div>
                 ))}

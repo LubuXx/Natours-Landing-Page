@@ -23,28 +23,27 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
     });
 });
 
-exports.getOne = (Model, popOptions) =>
-    catchAsync(async (req, res, next) => {
-        let query;
+exports.getOne = (Model, popOptions) => catchAsync(async (req, res, next) => {
+    let query;
 
-        if (req.params.slug) {
-            query = Model.findOne({ slug: req.params.slug });
-        } else {
-            query = Model.findById(req.params.id);
+    if (req.params.slug) {
+        query = Model.findOne({ slug: req.params.slug });
+    } else {
+        query = Model.findById(req.params.id);
+    }
+
+    if (popOptions) query = query.populate(popOptions);
+
+    const doc = await query;
+    if (!doc) return next(new AppError('No document found with that ID!', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: doc
         }
-
-        if (popOptions) query = query.populate(popOptions);
-
-        const doc = await query;
-        if (!doc) return next(new AppError('No document found', 404));
-
-        res.status(200).json({
-            status: 'success',
-            data: {
-                data: doc
-            }
-        });
     });
+});
 
 exports.createOne = Model => catchAsync(async (req, res, next) => {
     const doc = await Model.create(req.body);
