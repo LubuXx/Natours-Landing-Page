@@ -2,6 +2,8 @@ import React from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 function Header() {
     const { user, isAuthenticated, logout } = useAuth();
 
@@ -19,8 +21,9 @@ function Header() {
                     <div>
                         <Link to='/' className='nav__el nav__el--logout' onClick={logout}>Log out</Link>
                         <Link className='nav__el' to="/me">
-                            <img className='nav__user-img' src={user.photo} alt={`Photo of ${user.name}`} />
-                            <span>{user.name[0]}</span>
+                            {/*TODO: Update here with default and detailed user photo */}
+                            <img className='nav__user-img' src={`${BACKEND_URL}/img/users/${user.photo}`} alt={`Photo of ${user.name}`} />
+                            <span>{user.name.split(' ')[0]}</span>
                         </Link>
                     </div>
                     ) : (

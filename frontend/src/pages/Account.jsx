@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Error from './Error';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 function NavItem({ link, text, icon, active = false }) {
     return (
         <li className={active ? 'side-nav--active' : ''}>
@@ -59,7 +61,7 @@ export default function Account() {
                                 <input id='email' className='form__input' type='email' defaultValue={user.email} required name='email' />
                             </div>
                             <div className='form__group form__photo-upload'>
-                                <img className='form__user-photo' src={`/img/users/${user.photo}`} alt={`${user.name}'s photo`} />
+                                <img className='form__user-photo' src={`${BACKEND_URL}/img/users/${user.photo}`} alt={`${user.name}'s photo`} />
                                 <input className='form__upload' type='file' accept='image/*' id='photo' name='photo'  />
                                 <label className='form__label' htmlFor='photo'>Choose new photo</label>
                             </div>
