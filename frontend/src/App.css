@@ -1302,3 +1302,29 @@ body {
 
     z-index: 9999;
 }
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    padding: 1.2rem 2.5rem;
+    border-radius: 5px;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.alert--success {
+    background-color: #55c57a;
+    color: #fff;
+}
+
+.alert--error {
+    background-color: #eb4d4b;
+    color: #fff;
+}
