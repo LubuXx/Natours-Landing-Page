@@ -25,8 +25,8 @@ function NavItem({ link, text, icon, active = false }) {
 export default function Account() {
     const { user } = useAuth();
 
-    const [name, setName] = useState(user.name);
-    const [email, setEmail] = useState(user.email);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [photo, setPhoto] = useState(null);
 
     const [passwordCurrent, setPasswordCurrent] = useState('');
@@ -34,6 +34,13 @@ export default function Account() {
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (user) {
+            setName(user.name);
+            setEmail(user.email);
+        }
+    }, [user]);
 
     const handleUserDataSubmit = async e => {
         e.preventDefault();
