@@ -24,7 +24,7 @@ function NavItem({ link, text, icon, active = false }) {
 };
 
 export default function Account() {
-    const { user, loading: authLoading } = useAuth();
+    const { user } = useAuth();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -81,7 +81,7 @@ export default function Account() {
         };
     };
 
-    if (authLoading) return <div className='loading-overlay'> <CircularIndeterminate /> </div>
+    if (loading) return <div className='loading-overlay'>{CircularIndeterminate()}</div>
     if (!user) return <Error message={`You are not logged in!`} />
 
     return (
