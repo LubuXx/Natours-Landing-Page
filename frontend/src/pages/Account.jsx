@@ -1,11 +1,12 @@
 // TODO: Update Account interface depending on roles (guide and lead-guide)
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Error from './Error';
 import { updateMe, updateMyPassword } from '../services/userService';
 import ShowAlert from '../components/Alert';
+import CircularIndeterminate from '../components/Loading';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -23,7 +24,7 @@ function NavItem({ link, text, icon, active = false }) {
 };
 
 export default function Account() {
-    const { user } = useAuth();
+    const { user, loading: authLoading } = useAuth();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -80,6 +81,7 @@ export default function Account() {
         };
     };
 
+    if (authLoading) return <div className='loading-overlay'> <CircularIndeterminate /> </div>
     if (!user) return <Error message={`You are not logged in!`} />
 
     return (
@@ -112,11 +114,11 @@ export default function Account() {
                         <form className='form form-user-data' onSubmit={handleUserDataSubmit}>
                             <div className='form__group'>
                                 <label className='form__label' htmlFor='name'>Name</label>
-                                <input id='name' className='form__input' type='text' defaultValue={name} onChange={e => setName(e.target.value)} required name='name' />
+                                <input id='name' className='form__input' type='text' value={name} onChange={e => setName(e.target.value)} required name='name' />
                             </div>
                             <div className='form__group ma-bt-md'>
                                 <label className='form__label' htmlFor='email'>Email</label>
-                                <input id='email' className='form__input' type='email' defaultValue={email} onChange={e => setEmail(e.target.value)} required name='email' />
+                                <input id='email' className='form__input' type='email' value={email} onChange={e => setEmail(e.target.value)} required name='email' />
                             </div>
                             <div className='form__group form__photo-upload'>
                                 <img className='form__user-photo' src={`${BACKEND_URL}/img/users/${user.photo}`} alt={`${user.name}'s photo`} />
