@@ -21,7 +21,6 @@ function Header() {
                     <div>
                         <Link to='/' className='nav__el nav__el--logout' onClick={logout}>Log out</Link>
                         <Link className='nav__el' to="/me">
-                            {/*TODO: Update here with default and detailed user photo */}
                             <img className='nav__user-img' src={`${BACKEND_URL}/img/users/${user.photo}`} alt={`Photo of ${user.name}`} />
                             <span>{user.name.split(' ')[0]}</span>
                         </Link>

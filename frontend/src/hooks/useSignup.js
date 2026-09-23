@@ -3,6 +3,7 @@ import { useAuth } from "./useAuth";
 
 export const useSignup = () => {
     const { signup } = useAuth();
+
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -12,7 +13,7 @@ export const useSignup = () => {
             setError(null);
             await signup(userData);
         } catch (err) {
-            setError(err.response?.data?.message || 'Something went wrong. Please try again later!');
+            setError(err.response?.data?.error?.errors || err.response?.data?.message || 'Something went wrong. Please try again later!');
             throw err;
         } finally {
             setIsLoading(false);

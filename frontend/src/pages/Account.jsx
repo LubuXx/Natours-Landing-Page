@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { RiDeleteBinFill } from "react-icons/ri";
 import Error from './Error';
 import { updateMe, updateMyPassword } from '../services/userService';
 import CircularIndeterminate from '../components/Loading';
@@ -110,6 +111,12 @@ export default function Account() {
                             <NavItem link='/my-tours' text='My bookings' icon='briefcase' />
                             <NavItem link='#' text='My reviews' icon='star' />
                             <NavItem link='#' text='Billing' icon='credit-card' />
+                            <li className='side-nav__delete'>
+                                <button type="button" className='side-nav__delete-btn'>
+                                    <RiDeleteBinFill />
+                                    <span>Delete Account</span>
+                                </button>
+                            </li>
                         </ul>
                         {
                             user.role === 'admin' && (

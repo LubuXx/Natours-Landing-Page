@@ -1328,3 +1328,42 @@ body {
     background-color: #eb4d4b;
     color: #fff;
 }
+
+.side-nav__delete {
+    margin-top: 2rem;
+}
+
+.side-nav__delete-btn {
+    width: 100%;
+    padding: 1rem 4rem;
+
+    display: flex;
+    align-items: center;
+
+    background: none;
+    border: none;
+
+    color: var(--color-danger);
+    font-family: inherit;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    text-align: left;
+
+    transition: opacity 0.2s var(--ease);
+}
+
+.side-nav__delete-btn svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 2rem;
+
+    stroke: currentColor;
+}
+
+.side-nav__delete-btn:hover {
+    opacity: 0.9;
+}

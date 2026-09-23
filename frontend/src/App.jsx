@@ -24,16 +24,14 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/me' element={<Account />} />
           <Route path='/tours/:id' element={<Tour />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/download-apps' element={<DownloadApps />} />
+          <Route path='/become-a-guide' element={<BecomeGuide />} />
+          <Route path='/careers' element={<Careers />} />
+          <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<Error message={`404 Page Not Found!`} />} />
         </Routes>
       <Footer />
-      <Routes>
-        <Route path='/about-us' element={<AboutUs />} />
-        <Route path='/download-apps' element={<DownloadApps />} />
-        <Route path='/become-a-guide' element={<BecomeGuide />} />
-        <Route path='/careers' element={<Careers />} />
-        <Route path='/contact' element={<Contact />} />
-      </Routes>
     </div>
   );
 };

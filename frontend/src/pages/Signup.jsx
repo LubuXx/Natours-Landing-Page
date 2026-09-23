@@ -44,19 +44,19 @@ function Signup() {
         <form className='form form--login' onSubmit={handleSubmit}>
           <div className='form__group'>
             <label className='form__label' htmlFor='name'>Your Name</label>
-            <input id='name' className='form__input' placeholder='Your name' value={name} onChange={e => setName(e.target.value)} required />
+            <input id='name' className='form__input' placeholder='Your name' value={name} onChange={e => setName(e.target.value)} />
           </div>
           <div className='form__group ma-bt-md'>
             <label className='form__label' htmlFor='email'>Email Adrress</label>
-            <input id='email' className='form__input' type='email' placeholder='you@example.com' value={email} onChange={e => setEmail(e.target.value)} required />
+            <input id='email' className='form__input' type='email' placeholder='you@example.com' value={email} onChange={e => setEmail(e.target.value)}  />
           </div>
           <div className='form__group ma-bt-md'>
             <label className='form__label' htmlFor='password'>Password</label>
-            <input id='password' className='form__input' type='password' placeholder='••••••••' value={password} onChange={e => setPassword(e.target.value)} required />
+            <input id='password' className='form__input' type='password' placeholder='••••••••' value={password} onChange={e => setPassword(e.target.value)}  />
           </div>
           <div className='form__group ma-bt-md'>
             <label className='form__label' htmlFor='password-confirm'>Confirm Password</label>
-            <input className='form__input' id='password-confirm' type='password' placeholder='••••••••' value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} required />
+            <input className='form__input' id='password-confirm' type='password' placeholder='••••••••' value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)}  />
           </div>
           <div className='form__group'>
             <button className='btn btn--green' type='submit' disabled={isLoading}>

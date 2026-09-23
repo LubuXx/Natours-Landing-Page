@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -8,19 +9,19 @@ function Footer() {
             </div>
             <ul className='footer__nav'>
                 <li>
-                    <a href='#'>About us</a>
+                    <Link to='/about-us'>About us</Link>
                 </li>
                 <li>
-                    <a href='#'>Download apps</a>
+                    <Link to='/download-apps'>Download apps</Link>
                 </li>
                 <li>
-                    <a href='#'>Become a guide</a>
+                    <Link to='/become-a-guide'>Become a guide</Link>
                 </li>
                 <li>
-                    <a href='#'>Careers</a>
+                    <Link to='/careers'>Careers</Link>
                 </li>
                 <li>
-                    <a href='#'>Contact</a>
+                    <Link to='/contact'>Contact</Link>
                 </li>
             </ul>
             <p className='footer__copyright'>© {new Date().getFullYear()} LubuX. All rights reserved.</p>
