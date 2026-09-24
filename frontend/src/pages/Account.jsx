@@ -1,11 +1,11 @@
 // TODO: Update Account interface depending on roles (guide and lead-guide)
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { RiDeleteBinFill } from "react-icons/ri";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 import Error from './Error';
-import { updateMe, updateMyPassword } from '../services/userService';
+import { updateMe, updateMyPassword, deleteMe } from '../services/userService';
 import CircularIndeterminate from '../components/Loading';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -24,7 +24,9 @@ function NavItem({ link, text, icon, active = false }) {
 };
 
 export default function Account() {
-    const { user } = useAuth();
+    const navigate = useNavigate();
+
+    const { user, logout } = useAuth();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -89,6 +91,24 @@ export default function Account() {
         };
     };
 
+    const handleUserDelete = async e => {
+        e.preventDefault();
+
+        try {
+            setLoading(true);
+            await deleteMe(user.id);
+            showAlert('success', 'Account deleted successfully!');
+            window.setTimeout(() => {
+                logout();
+                navigate('/');
+            }, 800);
+        } catch (err) {
+            showAlert('error', err.response?.data?.message || 'Account deleting failed! Please try again later.');
+        } finally {
+            setLoading(false);
+        };
+    };
+
     if (!user) return <Error message={`You are not logged in!`} />
 
     return (
@@ -113,8 +133,8 @@ export default function Account() {
                             <NavItem link='#' text='Billing' icon='credit-card' />
                             <li className='side-nav__delete'>
                                 <button type="button" className='side-nav__delete-btn'>
-                                    <RiDeleteBinFill />
-                                    <span>Delete Account</span>
+                                    <RiDeleteBin5Fill />
+                                    <span onClick={handleUserDelete}>Delete Account</span>
                                 </button>
                             </li>
                         </ul>
