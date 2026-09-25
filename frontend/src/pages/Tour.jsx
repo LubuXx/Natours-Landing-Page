@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import 'leaflet/dist/leaflet.css';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTour } from '../services/tourService';
+import { displayMap } from '../hooks/useMapbox';
 import ReviewCard from '../components/ReviewCard';
 import CircularIndeterminate from '../components/Loading';
 
@@ -20,9 +22,12 @@ function OverviewBox({ label, text, icon }) {
 
 function Tour() {
     const { id } = useParams();
+
     const [tour, setTour] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const mapRef = useRef(null);
 
     useEffect(() => {
         const fetchTour = async () => {
@@ -38,6 +43,15 @@ function Tour() {
 
         fetchTour();
     }, [id]);
+
+    useEffect(() => {
+        if (!tour || !mapRef.current || !tour.locations?.length) return;
+
+        const map = displayMap(mapRef.current, tour.locations);
+        return () => {
+            map?.remove();
+        };
+    }, [tour]);
 
     if (loading) return <div className='loading-overlay'>{CircularIndeterminate()}</div>;
     if (error) return <p>{error}</p>;
@@ -100,7 +114,7 @@ function Tour() {
                             {
                                 tour.guides.map((guide, index) => (
                                     <div key={index} className='overview-box__detail'>
-                                        <img className='overview-box__img' src={`/img/users/${guide.photo}`} alt={`${guide.name}`} />
+                                        <img className='overview-box__img' src={`${BACKEND_URL}/img/users/${guide.photo}`} alt={`${guide.name}`} />
                                         <span className='overview-box__label'>
                                             {guide.role === 'lead-guide' ? 'Lead Guide' : 'Tour Guide'}
                                         </span>
@@ -139,7 +153,8 @@ function Tour() {
 
             {/* After the review modelling it's and test docs, update this section as a location at real time gps*/}
             <section className='section-map'>
-                <div id='map'></div>
+                <div id='map' ref={mapRef}>
+                </div>
             </section>
 
             <section className='section-reviews'>
