@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
 import ShowAlert from '../components/Alert';
+import { Link } from 'react-router-dom';
 import CircularIndeterminate from '../components/Loading';
 
 function Login() {
@@ -46,10 +47,13 @@ function Login() {
             <label className='form__label' htmlFor='password'>Password</label>
             <input id='password' className='form__input' type='password' placeholder='••••••••' value={password} onChange={e => setPassword(e.target.value)} />
           </div>
-          <div className='form__group ma-bt-md'>
-            <button className='btn btn--green' type='submit' disabled={isLoading}>
-              { isLoading ? 'Logging in...' : 'Login'}
-            </button>
+          <div className='form__group ma-bt-md login-actions'>
+              <button className='btn btn--green' type='submit' disabled={isLoading}>
+                {isLoading ? 'Logging in...' : 'Login'}
+              </button>
+              <Link to='/forgotPassword' className='forgot-password'>
+                  Forgot password?
+              </Link>
           </div>
           {
             error && (

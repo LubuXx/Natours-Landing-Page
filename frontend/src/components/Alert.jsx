@@ -4,7 +4,7 @@ import Alert from '@mui/material/Alert';
 
 function ShowAlert(status, message) {
     return(
-        <Alert variant='filled' severity={`${status}`}>{message}</Alert>
+        <Alert style={{fontSize: '15px'}} variant='filled' severity={`${status}`}>{message}</Alert>
     );
 };
 

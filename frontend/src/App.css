@@ -1398,3 +1398,19 @@ body {
 .leaflet-popup-tip {
     background-color: #ffffff;
 }
+
+.login-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-password {
+    color: grey;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.forgot-password:hover {
+    color: #55c57a;
+}

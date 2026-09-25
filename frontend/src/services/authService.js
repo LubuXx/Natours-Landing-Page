@@ -16,7 +16,7 @@ export const logout = async () => {
 }
 
 export const forgotPassword = async email => {
-    const response = await api.patch('/users/forgotPassword', { email });
+    const response = await api.post('/users/forgotPassword', { email });
     return response.data;
 };
 
