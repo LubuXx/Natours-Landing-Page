@@ -13,7 +13,7 @@ export const login = async credentials => {
 export const logout = async () => {
     const response = await api.get('/users/logout')
     return response.data;
-}
+};
 
 export const forgotPassword = async email => {
     const response = await api.post('/users/forgotPassword', { email });

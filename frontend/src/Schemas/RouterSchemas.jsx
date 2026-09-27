@@ -9,6 +9,7 @@ import Overview from '../components/Overview';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Tour from '../pages/Tour';
+import ResetPassword from '../pages/ResetPassword';
 import Account from '../pages/Account';
 import ForgotPassword from '../pages/ForgotPassword';
 import { Routes, Route } from 'react-router-dom';
@@ -26,6 +27,7 @@ function RouterSchemas() {
                 <Route path='/about-us' element={<AboutUs />} />
                 <Route path='/download-apps' element={<DownloadApps />} />
                 <Route path='/become-a-guide' element={<BecomeGuide />} />
+                <Route path='/resetPassword' element={<ResetPassword />} />
                 <Route path='/careers' element={<Careers />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='*' element={<Error message={`404 Page Not Found!`} />} />
