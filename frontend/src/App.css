@@ -1981,3 +1981,80 @@ body {
     width: 100%;
   }
 }
+
+.reset-code {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.reset-code__input {
+    width: 5rem;
+    height: 5.5rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #333;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.reset-code__input:focus {
+    border-color: #55c57a;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(85, 197, 122, 0.15);
+}
+
+@media (max-width: 600px) {
+    .reset-code {
+        gap: 0.6rem;
+    }
+
+    .reset-code__input {
+        width: 4.2rem;
+        height: 4.8rem;
+        font-size: 2rem;
+    }
+}
+.reset-password__group {
+    margin-bottom: 2.5rem;
+}
+
+.reset-password__label {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.reset-password__input {
+    width: 100%;
+    padding: 1.4rem 1.6rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    font-size: 1.5rem;
+    color: #333;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.reset-password__input:focus {
+    border-color: #55c57a;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(85, 197, 122, 0.15);
+}
+
+.reset-password__input::placeholder {
+    color: #aaa;
+}
+
+@media (max-width: 600px) {
+    .reset-password__input {
+        padding: 1.3rem 1.4rem;
+        font-size: 1.4rem;
+    }
+}
