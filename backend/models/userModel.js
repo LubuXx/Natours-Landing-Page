@@ -85,15 +85,45 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
-    const resetToken = crypto.randomBytes(32).toString('hex');
+    // if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+    //     const resetToken = crypto.randomBytes(32).toString('hex');
+    //     this.passwordResetToken = crypto
+    //         .createHash('sha256')
+    //         .update(resetToken)
+    //         .digest('hex');
+
+    //     this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    //     return resetToken;
+    // } else if (process.env.NODE_ENV === 'production') {
+    //     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //     let resetCode = '';
+    //     for (let i = 0; i <6; i++) {
+    //         resetCode += characters[crypto.randomInt(0, characters.length)];
+    //     };
+
+    //     this.passwordResetToken = crypto
+    //         .createHash('sha256')
+    //         .update(resetCode)
+    //         .digest('hex');
+
+    //     this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    //     return resetCode;
+    // };
+
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let resetCode = '';
+    for (let i = 0; i <6; i++) {
+        resetCode += characters[crypto.randomInt(0, characters.length)];
+    };
+
     this.passwordResetToken = crypto
         .createHash('sha256')
-        .update(resetToken)
+        .update(resetCode)
         .digest('hex');
 
     this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-    return resetToken;
-}
+    return resetCode;
+};
 
 const User = mongoose.model('User', userSchema);
 
