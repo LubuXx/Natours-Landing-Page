@@ -1,0 +1,37 @@
+import React, { useState } from 'react';
+import baseEmail from './baseEmail';
+
+function welcomeEmail() {
+    const [firstName, setFirstName] = useState('');
+    const [url, setUrl] = useState('');
+
+    return (
+        <div>
+            <baseEmail />
+                <p>Hi {firstName}</p>
+                <p>Welcome to Natours, we're glad to have you 🎉🙏</p>
+                <p>We're all a big family here, so make sure to upload your user photo so we get to know you a bit better!</p>
+                <table className='btn btn-primary' role='presentation' border={0} cellPadding={0} cellSpacing={0}>
+                    <tbody>
+                        <tr>
+                            <td align='left'>
+                                <table role='presentation' border={0} cellPadding={0} cellSpacing={0}>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href={`${url}`} target='_blank'>Upload user photo</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>If you need any help with booking your next tour, please don't hesitate to contact us!</p>
+                <p>- Burak Bas, CEO</p>
+        </div>
+    );
+};
+
+export default welcomeEmail;
