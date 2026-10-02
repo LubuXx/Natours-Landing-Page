@@ -1,10 +1,13 @@
-import 'leaflet/dist/leaflet.css';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTour } from '../services/tourService';
 import { displayMap } from '../hooks/useMapbox';
+import { useAuth } from '../hooks/useAuth';
+import { Link } from 'react-router-dom';
+import { bookTour } from '../services/stripeService';
 import ReviewCard from '../components/ReviewCard';
 import CircularIndeterminate from '../components/Loading';
+import 'leaflet/dist/leaflet.css';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -22,6 +25,7 @@ function OverviewBox({ label, text, icon }) {
 
 function Tour() {
     const { id } = useParams();
+    const { user } = useAuth();
 
     const [tour, setTour] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -184,7 +188,15 @@ function Tour() {
                         <p className='cta__text'>
                             {tour.duration} days. 1 adventure. Infinite memories. Make it yours today!
                         </p>
-                        <button className='btn btn--green span-all-rows'>Book tour now!</button>
+                        <div>
+                            {
+                                user ? (
+                                    <button className='btn btn--green span-all-rows' onClick={() => bookTour(tour._id)}>Book tour now!</button>
+                                ) : (
+                                    <Link className='btn btn--green span-all-rows' to='/login'>Log in to book tour</Link>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
             </section>

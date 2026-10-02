@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
-import ShowAlert from '../components/Alert';
 import { Link } from 'react-router-dom';
+import ShowAlert from '../components/Alert';
 import CircularIndeterminate from '../components/Loading';
 
 function Login() {
